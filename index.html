@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+
+	<title>Arquitetura Hexagonal - Indrodução</title>
+
+	<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+	<meta name="author" content="Hakim El Hattab">
+
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+	<meta name="viewport"
+		content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/black.css" id="theme">
+
+	<!-- Code syntax highlighting -->
+	<link rel="stylesheet" href="lib/css/zenburn.css">
+
+	<!-- Printing and PDF exports -->
+	<script>
+		var link = document.createElement('link');
+		link.rel = 'stylesheet';
+		link.type = 'text/css';
+		link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+		document.getElementsByTagName('head')[0].appendChild(link);
+	</script>
+
+	<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+</head>
+
+<body>
+
+	<div class="reveal">
+
+		<!-- Any section element inside of this container is displayed as a slide -->
+		<div class="slides">
+			<section>
+				<h3>Boas práticas de desenvolvimento</h3>
+				<img data-src="img/logo2.jpg" width="800" height="400">
+				<h4>Bora aprender sobre boas práticas?</h4>
+				<p>
+					<small>Palestrante: <a href="http://rogeriofontes.inf.br" target="_blank">Rogério Fontes</a> / <a
+							href="http://twitter.com/rogeriofontes" target="_blank">@rogeriofontes</a></small>
+				</p>
+			</section>
+
+			<section>
+				<h5>Sobre o palestrante:</h5>
+				<p><span style="font-size:24px">APAIXONADO EM MANEIRAS E FORMAS ÁGEIS DE CRIAR CÓDIGO FONTE.
+						PROGRAMANDO SEMPRE TOMANDO UM BOM CAFÉ E ESCUTANDO UM BELO E PESADO ROCK`N ROLL.
+						TRABALHA A MAIS DE 10 ANOS COM JAVA E LINUX, PASSANDO POR ANDROID, PYTHON, PHP E NODE.JS.
+						PROFESSOR UNIVERSITÁRIO DE REDES DE COMPUTADORES, JAVA E DISPOSITIVOS MÓVEIS.
+						JUGLEADER E CO-FUNDADOR DO UAIJUG (GRUPO DE USUÁRIOS JAVA DO TRIÂNGULO MINEIRO) E DO TRIÂNGULO
+						HACKERSPACE.
+						ENGENHEIRO DE MORDENIZAÇÃO - EVERIS/ITAÚ E APAIXONADO POR ESTUDOS MÚSICAIS. </p>
+			</section>
+
+			<section>
+				<a href="http://www.uaijug.com.br/" target="_blank"><img data-src="img/uaijug-300.png"></a>
+				<a href="http://www.triangulohackerspace.net.br/" target="_blank"><img data-src="img/ths.png"></a>
+			</section>
+
+			<section>
+				<h5>Práticas para bom desenvolvimento</h5>
+				<p><span style="font-size:24px">
+						Umas das coisas mais importantes no desenvolvimento de software é saber como fazemos bons
+						projetos e pensarmos neles sabendo as boas práticas já testadas no mercado.</span></p>
+			</section>
+
+			<section>
+				<h5>Antes de começar</h5>
+				<ul style="font-size:24px">
+					<li>Conheça a plataforma que irá atuar, seja técnica ou de negócios.</li>
+					<li>Trabalhe bem em equipe.</li>
+					<li>Estude os recursos da linguagem.</li>
+					<li>Conheça outras linguagens (T).</li>
+					<li>Estude outros códigos (Github).</li>
+					<li>Leia e estude diversas literaturas</li>
+					<li>Escreva definitivamente</li>
+					<li>Faça o tratamento de erros</li>
+					<li>Adote um padrão de programação</li>
+					<li>Controle alterações</li>
+					<li>Levantar requisitos (D.D.D)</li>
+					<li>Programe para reutilizar</li>
+					<li>Olhe códigos prontos com cautela</li>
+					<li>Se preocupe com segurança (OWASP, LGPD)</li>
+				</ul>
+			</section>
+
+			<section>
+				<h5>4 Pilares da Orientação a objetos.</h5>
+				<ul style="font-size:24px">
+					<li>1 - Abstração.</li>
+					<li>2 - Encapsulamento.</li>
+					<li>3 - Herança.</li>
+					<li>4 - Polimorfismo.</li>
+				</ul>
+			</section>
+
+			<section>
+				<h5>S.O.L.I.D.</h5>
+				<ul style="font-size:24px">
+					<li>[S]ingle Responsibility Principle (Princípio da responsabilidade Única).</li>
+					<li>[O]pen/Closed Principle (Princípio aberto/fechado).</li>
+					<li>[L]iskov Substitution Principle (Princípio substituição de Liskov).</li>
+					<li>[I]nterface Segregation Principle (Princípio segregação de interfaces).</li>
+					<li>[D]ependecy Inversion Principle (Princípio da inversão de dependências)</li>
+				</ul>
+			</section>
+
+
+			<section>
+				<h5>DRY principle - Don't repeat yourself</h5>
+				<p><span style="font-size:24px">
+						"Every piece of knowledge must have a single, unambiguous, authoritative representation within a
+						system."<br />
+
+						<br />
+						Temos que pensar em evitar redundâncias em processos e na lógica, em processos pensamos em
+						automatização e na lógica pensamos em abstrações até que apenas as características mais
+						essenciais permaneçam.
+					</span></p>
+				<p><span style="font-size:18px">
+						O conceito, que muitas vezes é creditado a Andrew Hunt e David Thomas, autores de "The Pragmatic
+						Programmer"
+					</span></p>
+			</section>
+
+			<section>
+				<h5>KISS principle - Keep it Simple, Stupid</h5>
+				<img data-src="img/kiss.jpeg" width="600" height="300">
+			</section>
+
+			<section>
+				<h5>YAGNI, stands for You Ain’t Gonna Need It</h5>
+				<p><span style="font-size:24px">É um princípio da metodologia de desenvolvimento de software da Extreme
+						Programming (XP). Esse princípio diz que você não deve criar recursos que não sejam realmente
+						necessários. <br>
+					</span></p>
+				<p><span style="font-size:18px">
+						Ron Jeffries, um dos cofundadores do XP, disse uma vez: Sempre implemente as coisas quando você
+						realmente precisa delas, nunca quando você apenas prevê que precisa delas.
+					</span></p>
+			</section>
+
+			<section>
+				<h5>SOC - separation-of-concerns</h5>
+				<p><span style="font-size:24px">
+						SOC é um dos princípios mais fundamentais no desenvolvimento de software.
+						<br />
+						É tão crucial que 2 de 5 princípios SOLID (Single Responsibility e Interface Segregation) sejam
+						derivações diretas deste conceito.
+					</span></p>
+				<p><span style="font-size:18px">
+						O princípio é simples: não escreva seu programa como um bloco sólido, em vez disso, divida o
+						código em pedaços que são pequenos pedaços finalizados do sistema, cada um capaz de completar um
+						trabalho simples e distinto.
+					</span></p>
+			</section>
+
+			<section>
+				<section>
+					<h5>DDD – Domain-Driven Design</h5>
+					<p><span style="font-size:24px">Domain-Driven Design ou Projeto Orientado a Domínio é um padrão de
+							modelagem de software orientado a objetos que procura reforçar conceitos e boas práticas
+							relacionadas à OO</span></p>
+				</section>
+				<section>
+					<p><span style="font-size:24px">
+							Erick Evans lançou em 2003 o “Domain-Driven Design: Tackling Complexity in the Heart of
+							Software” Mal imaginou que o livro tanto quanto o conceito alcançaria tal sucesso e
+							respeito.
+							<br />
+							Trata-se de uma abordagem de design de software de forma disciplinada, abordando uma série
+							de conceitos e técnicas sempre com foco no domínio do software.
+						</span></p>
+				</section>
+				<section>
+					<ul style="font-size:24px">
+						<li>Ubiquitous Language</li>
+						<li>Separação das camadas</li>
+						<li>Voltando aos itens principais do modelo, começaremos com a Entidade</li>
+						<li>Objetos de valor</li>
+						<li>Serviços</li>
+						<li>Factories</li>
+						<li>Repositório</li>
+					</ul>
+				</section>
+			</section>
+
+			<section>
+				<h5>5 passos do Desenvolvimento Orientado a Testes (TDD)</h5>
+				<ul style="font-size:18px">
+					<li>1 – Leia, entenda e analise o recurso a ser implementado ou a indicação de erro.</li>
+					<li>2 – Traduza a requisição necessária escrevendo um teste unitário. Importante: se existir
+						configuração de hot reload, o teste unitário vai rodar e falhar como se código algum houvesse
+						sido implementado.</li>
+					<li>3 – Escreva e implemente o código que preenche a solicitação. Rode todos os testes. Caso
+						funcionem, está tudo certo. Se não, repita o processo.</li>
+					<li>4 – Limpe seu código por meio da refatoração.</li>
+					<li>5 – Volte ao passo 1 e faça tudo novamente.</li>
+				</ul>
+				<img data-src="img/tdd.png" width="400" height="300">
+			</section>
+
+			<section>
+				<section>
+					<h5>BDD – Behavior Driven Development </h5>
+					<p><span style="font-size:18px">(Desenvolvimento Guiado por Comportamento ou Desenvolvimento
+							Orientado a Comportamento)</span></p>
+					<p><span style="font-size:24px">
+							Foi originalmente concebido em 2003, por Dan North, como uma resposta ao TDD, tem se
+							expandido muito assim como DDD e TDD.
+
+							É uma abordagem que funciona também muito bem com uma metodologia ágil, encorajando
+							desenvolvedores, pessoas de qualidade, não técnicas e de negócios em um projeto de software.
+							Também defende o uso da ubiquitous language como explicado acima facilitando a conversação
+							entre toda equipe envolvida.
+						</span></p>
+				</section>
+				<section>
+					<h5>Como começa a prática do BDD:</h5>
+					<p><span style="font-size:24px">Envolver as pessoas no processo através de Outside-in Development
+							(Desenvolvimento de Fora pra Dentro)<br />
+							Usar exemplos para descrever o comportamento de uma aplicação ou unidades de código<br />
+							Automatizar os exemplos para prover um feedback rápido e testes de regressão<br />
+							Usar “deve” na hora de descrever o comportamento de software para ajudar esclarecer
+							responsabilidades e permitir que funcionalidades do software sejam questionadas<br />
+							Usar dublês de teste (mocks, stubs, fakes, dummies) para auxiliar na colaboração entre
+							módulos e códigos que ainda não foram escritos.</span></p>
+				</section>
+				<section>
+					<h5>Um exemplo bem simples de estória de uma aplicação de vendas poderia ser: “Venda de balas na
+						doceria”.</h5>
+
+					<pre>
+#language: pt-br
+Funcionalidade: Vender doces
+     Para quando uma doce for vendido
+     Eu, como vendedor
+     Desejo decrementar um item no estoque
+
+Cenário: Baixa 1 bala do estoque
+     Dado que cliente pede 1 bala
+     E tenho 10 balas em estoque
+     Quando ele compra realiza a compra
+     Então eu fico com 9 balas em estoque
+</pre>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h5>O que são Design Patterns?</h5>
+					<p><span style="font-size:24px">
+							Design Patterns ou padrões de projetos são soluções generalistas para problemas recorrentes
+							durante o desenvolvimento de um software. Não se trata de um framework ou um código pronto,
+							mas de uma definição de alto nível de como um problema comum pode ser solucionado.
+						</span></p>
+				</section>
+				<section>
+					<h5>Creational Design Patterns</h5>
+					<ul style="font-size:24px">
+						<li>Creational Design Patterns</li>
+						<li>Builder</li>
+						<li>Factory Method</li>
+						<li>Prototype</li>
+						<li>Singleton</li>
+					</ul>
+				</section>
+				<section>
+					<h5>Structural Design Patterns</h5>
+					<ul style="font-size:24px">
+						<li>Adapter</li>
+						<li>Bridge</li>
+						<li>Composite</li>
+						<li>Decorator</li>
+						<li>Façade</li>
+						<li>Flyweight</li>
+						<li>Proxy</li>
+					</ul>
+				</section>
+				<section>
+					<h5>Behavioral Patterns</h5>
+					<ul style="font-size:24px">
+						<li>Chain of Responsibility</li>
+						<li>Command</li>
+						<li>Interpreter</li>
+						<li>Iterator</li>
+						<li>Mediator</li>
+						<li>Memento</li>
+						<li>Observer</li>
+						<li>State</li>
+						<li>Strategy</li>
+						<li>Template Method</li>
+						<li>Visitor</li>
+					</ul>
+				</section>
+				<section>
+					<h5>Padrões arquiteturais</h5>
+					<ul style="font-size:24px">
+						<li>Interceptor</li>
+						<li>Model View Controler (MVC)</li>
+						<li>Model View ViewModel (MVVM)</li>
+						<li>Model View Presenter (MVP)</li>
+						<li>n-tier</li>
+						<li>Specification</li>
+						<li>Publish–subscribe</li>
+						<li>Inversion of control</li>
+					</ul>
+				</section>
+				<section>
+					<h5>Outros Design Patterns</h5>
+					<ul style="font-size:24px">
+						<li>Rules Design Patterns</li>
+						<li>Dependency Injection</li>
+						<li>Intercepting filter</li>
+						<li>Lazy loading</li>
+						<li>Mock object</li>
+						<li>Method chaining</li>
+						<li>Inversion of control</li>
+						<li>Unit of Work</li>
+					</ul>
+				</section>
+			</section>
+
+			<section>
+				<h5>Clean Architecture</h5>
+				<p><span style="font-size:24px">A Clean Architecture foi criada por Robert C. Martin e promovida em seu
+						livro Clean Architecture: A Craftsman’s Guide to Software Structure. Assim como outras
+						filosofias de design de software, a Clean Architecture tenta fornecer uma metodologia a ser
+						usada na codificação, a fim de facilitar o desenvolvimento códigos, permitir uma melhor
+						manutenção, atualização e menos dependências. <br>
+					</span></p>
+			</section>
+
+			<section>
+				<section>
+					<h5>Arquitetura Hexagonal</h5>
+					<p><span style="font-size:24px">
+							A ideia principal dessa arquitetura é separar códigos em camadas definidas por sua
+							responsabilidade. Que são:
+						</span></p>
+				</section>
+				<section>
+					<p><span style="font-size:24px">
+							Infraestrutura: Camada responsável por comunicar com o mundo externo (HTTP, Bancos de Dados,
+							gRPC, AMPQ, etc.), resumindo, ela é quem recebe as chamadas do mundo externo, responde e
+							também é quem chama as dependências externas e recebe as respostas dela.<br /><br />
+						</span></p>
+				</section>
+				<section>
+					<p><span style="font-size:24px">
+							Aplicação: Camada responsável por controlar e transformar os dados para se adaptarem aos
+							modelos que as regras de negócio precisam para resolver aquilo que deve ser
+							resolvido.<br /><br />
+						</span></p>
+				</section>
+				<section>
+					<p><span style="font-size:24px">
+							Domínio ou Core: Camada que contém as regras de negócio da sua aplicação.<br /><br />
+						</span></p>
+				</section>
+			</section>
+
+			<section>
+				<h5>SAGA</h5>
+				<p><span style="font-size:24px">
+						Um padrão de saga é uma sequência de transações locais em que cada transação atualiza dados em
+						um único serviço. A primeira transação em uma saga é iniciada por uma solicitação externa
+						correspondente à operação do sistema e, em seguida, cada etapa subsequente é acionada pela
+						conclusão da anterior.
+					</span></p>
+			</section>
+
+			<section>
+				<img data-src="img/demo.jfif" width="250" header="200">
+			</section>
+
+			<section>
+				<img data-src="img/thanks.jpg" width="250" header="200">
+			</section>
+
+			<section>
+				<section>
+					<span style="font-size:20px">
+						<a href="https://micreiros.com/treze-praticas-para-desenvolvimento-de-software-boas-praticas/"
+							target="_blank">[1]
+							https://micreiros.com/treze-praticas-para-desenvolvimento-de-software-boas-praticas/</a><br />
+						<a href="https://micreiros.com/treze-praticas-para-desenvolvimento-de-software-boas-praticas/"
+							target="_blank">[2]
+							https://micreiros.com/treze-praticas-para-desenvolvimento-de-software-boas-praticas/</a><br />
+						<a href="https://henriquesd.medium.com/dry-kiss-yagni-principles-1ce09d9c601f"
+							target=" _blank">[3]
+							https://henriquesd.medium.com/dry-kiss-yagni-principles-1ce09d9c601f</a><br />
+						<a href="https://nalexn.github.io/separation-of-concerns/" target="_blank">[4]
+							https://nalexn.github.io/separation-of-concerns/
+						</a><br />
+						<a href="https://gkovan.medium.com/solid-design-principles-makes-test-driven-development-faster-and-easier-35c9eec22ff1"
+							target="_blank">[4]
+							https://gkovan.medium.com/solid-design-principles-makes-test-driven-development-faster-and-easier-35c9eec22ff1
+						</a><br />
+						<a href="https://www.zup.com.br/blog/design-principle-solid" target="_blank">[4]
+							https://www.zup.com.br/blog/design-principle-solid
+						</a> </span>
+				</section>
+				<section>
+					<span style="font-size:20px">
+						<a href="https://nalexn.github.io/separation-of-concerns/" target="_blank">[4]
+							https://nalexn.github.io/separation-of-concerns/
+						</a><br />
+						<a href="https://www.tecmundo.com.br/software/155909-5-passos-desenvolvimento-orientado-testes-tdd.htm"
+							target="_blank">[4]
+							https://www.tecmundo.com.br/software/155909-5-passos-desenvolvimento-orientado-testes-tdd.htm
+						</a><br />
+						<a href="https://www.legiaodosherois.com.br/lista/16-coisas-que-o-batman-carrega-em-seu-cinto-de-utilidades.html#list-item-16"
+							target="_blank">[4]
+							https://www.legiaodosherois.com.br/lista/16-coisas-que-o-batman-carrega-em-seu-cinto-de-utilidades.html#list-item-16
+						</a><br />
+						<a href="https://medium.com/luizalabs/descomplicando-a-clean-architecture-cf4dfc4a1ac6"
+							target="_blank">[4]
+							https://medium.com/luizalabs/descomplicando-a-clean-architecture-cf4dfc4a1ac6
+						</a><br />
+						<a href="https://www.lucidchart.com/blog/domain-driven-design-introduction" target="_blank">[4]
+							https://www.lucidchart.com/blog/domain-driven-design-introduction
+						</a><br />
+						<a href="http://shipit.resultadosdigitais.com.br/blog/estruturando-seu-projeto-com-bdd-e-cucumber/"
+							target="_blank">[4]
+							http://shipit.resultadosdigitais.com.br/blog/estruturando-seu-projeto-com-bdd-e-cucumber/"</a><br />
+						<a href="https://www.eduardopires.net.br/2012/06/ddd-tdd-bdd/" target="_blank">[4]
+							https://www.eduardopires.net.br/2012/06/ddd-tdd-bdd/</a> </span>
+				</section>
+				<section>
+					<span style="font-size:20px">
+						<a href="https://www.opus-software.com.br/design-patterns/" target="_blank">[4]
+							https://www.opus-software.com.br/design-patterns/</a><br />
+						<a href="https://diegoborgs.com.br/blog/arquitetura-hexagonal-%C3%A9-arquitetura-%C3%A9-hexagonal"
+							target="_blank">[4]
+							https://diegoborgs.com.br/blog/arquitetura-hexagonal-%C3%A9-arquitetura-%C3%A9-hexagonal</a><br />
+						<a href="https://medium.com/tableless/desvendando-a-arquitetura-hexagonal-52c56f8824c"
+							target="_blank">[4]
+							https://medium.com/tableless/desvendando-a-arquitetura-hexagonal-52c56f8824c</a><br />
+						<a href="https://www.javatips.net/api/modbus4j-master/Modbus4J/src_cdc/com/serotonin/cdc/messaging/WaitingRoom.java"
+							target="_blank">[4]
+							https://www.javatips.net/api/modbus4j-master/Modbus4J/src_cdc/com/serotonin/cdc/messaging/WaitingRoom.java</a><br />
+						<a href="https://aws.amazon.com/blogs/compute/introducing-aws-virtual-waiting-room/"
+							target="_blank">[4]
+							https://aws.amazon.com/blogs/compute/introducing-aws-virtual-waiting-room/</a><br />
+						<a href="https://blog.couchbase.com/saga-pattern-implement-business-transactions-using-microservices-part/"
+							target="_blank">[4]
+							https://blog.couchbase.com/saga-pattern-implement-business-transactions-using-microservices-part/</a><br />
+						<a href="https://microservices.io/patterns/data/saga.html" target="_blank">[4]
+							https://microservices.io/patterns/data/saga.html</a><br />
+						<a href="https://dev.to/thiagosilva95/saga-pattern-para-microservices-2pb6" target="_blank">[4]
+							https://dev.to/thiagosilva95/saga-pattern-para-microservices-2pb6</a><br />
+						<a href="https://blog.couchbase.com/saga-pattern-implement-business-transactions-using-microservices-part/"
+							target="_blank">[4]
+							https://blog.couchbase.com/saga-pattern-implement-business-transactions-using-microservices-part/</a><br />
+					</span>
+				</section>
+			</section>
+		</div>
+
+	</div>
+
+	<script src="lib/js/head.min.js"></script>
+	<script src="js/reveal.js"></script>
+
+	<script>
+
+		// Full list of configuration options available at:
+		// https://github.com/hakimel/reveal.js#configuration
+		Reveal.initialize({
+			controls: true,
+			progress: true,
+			history: true,
+			center: true,
+
+			transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+			// Optional reveal.js plugins
+			dependencies: [
+				{ src: 'lib/js/classList.js', condition: function () { return !document.body.classList; } },
+				{ src: 'plugin/markdown/marked.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+				{ src: 'plugin/markdown/markdown.js', condition: function () { return !!document.querySelector('[data-markdown]'); } },
+				{ src: 'plugin/highlight/highlight.js', async: true, callback: function () { hljs.initHighlightingOnLoad(); } },
+				{ src: 'plugin/zoom-js/zoom.js', async: true },
+				{ src: 'plugin/notes/notes.js', async: true }
+			]
+		});
+
+	</script>
+
+</body>
+
+</html>
